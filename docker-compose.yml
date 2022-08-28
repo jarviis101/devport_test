@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: test_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - './requirements.txt:/python-docker/requirements.txt'
+      - '.:/python-docker'
+    networks:
+      - app
+  mongodb:
+    image: mongo:5.0
+    container_name: test_mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=s3cr3t
+      - MONGO_INITDB_DATABASE=test_app_db
+    volumes:
+      - mongodb:/data/db
+      - ./docker/mongodb/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - app
+
+networks:
+  app:
+    driver: bridge
+
+volumes:
+  mysql-data:
+  mongodb:
