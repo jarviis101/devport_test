@@ -17,3 +17,8 @@ $ cp .env .env.example
 $ cp docker-compose.override.yml.dist docker-compose.override.yml
 $ docker-compose up -d --build
 ```
+
+### Problems with this app
+* lack of unit tests
+* lack of api & documentation
+* lack of csrf protection on forms
