@@ -8,7 +8,7 @@ from app.exception.calculator.validation_exception import ValidationException
 
 class CalculatorResolver:
     @staticmethod
-    def resolve(request: Request):
+    def resolve(request: Request) -> CalculatorDTO:
         dto = json.loads(
             json.dumps(request.get_json()),
             object_hook=lambda d: CalculatorDTO(**d)

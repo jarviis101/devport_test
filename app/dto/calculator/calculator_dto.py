@@ -1,6 +1,3 @@
-import json
-
-
 class CalculatorDTO:
     def __init__(self, left_team: str, right_team: str):
         self.left_team = left_team

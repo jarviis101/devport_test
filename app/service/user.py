@@ -1,4 +1,3 @@
-from bson import ObjectId
 from flask_pymongo import PyMongo
 
 from app.dto.user.update_password_dto import UpdatePasswordDTO
