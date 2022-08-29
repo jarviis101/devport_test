@@ -1,3 +1,5 @@
+from typing import Optional
+
 from flask_login import UserMixin
 
 from app import login_manager
@@ -12,8 +14,8 @@ class User(UserMixin):
 
 
 @login_manager.user_loader
-def user_loader(id: str):
-    user = repository.find(id)
+def user_loader(identifier: str) -> Optional[User]:
+    user = repository.find(identifier)
     if not user:
         return
 
