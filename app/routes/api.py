@@ -1,5 +1,5 @@
 import flask_login
-from flask import Blueprint, request, flash, redirect, url_for
+from flask import Blueprint, request, jsonify
 
 from app.exception.calculator.validation_exception import ValidationException
 from app.resolver.calculator.calculator_resolver import CalculatorResolver
@@ -16,8 +16,10 @@ def calculator():
     try:
         dto = CalculatorResolver.resolve(request)
     except ValidationException as ex:
-        flash(ex.args[0], 'error')
-        return redirect(url_for('index.profile'))
+        return jsonify(
+            error=ex.args[0]
+        )
     index = cl.calculate(dto)
-    return str(index)
-    # return calculator.calculate(dto)
+    return jsonify(
+        index=index
+    )

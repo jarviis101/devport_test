@@ -49,4 +49,7 @@
             </div>
         </section>
     </body>
+    {% block scripts %}
+        <script src="{{url_for('static', filename='js/app.js')}}"></script>
+    {% endblock %}
 </html>

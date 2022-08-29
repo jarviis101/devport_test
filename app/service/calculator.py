@@ -7,10 +7,10 @@ class IndexCalculator:
 
     def calculate(self, dto: CalculatorDTO):
         first_team_list = list(
-            dto.get_first_team().replace(" ", "").lower()
+            dto.get_left_team().replace(" ", "").lower()
         )
         second_team_list = list(
-            dto.get_second_team().replace(" ", "").lower()
+            dto.get_right_team().replace(" ", "").lower()
         )
 
         if first_team_list == second_team_list:
@@ -23,5 +23,5 @@ class IndexCalculator:
 
         if count > 0:
             idx = self.MAX_INDEX_VALUE - (self.MAX_INDEX_VALUE / count)
-            return idx
+            return round(idx, 2)
         return self.MIN_INDEX_VALUE

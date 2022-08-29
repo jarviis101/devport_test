@@ -1,10 +1,20 @@
+import json
+
+
 class CalculatorDTO:
-    def __init__(self, first_team: str, second_team: str):
-        self.first_team = first_team
-        self.second_team = second_team
+    def __init__(self, left_team: str, right_team: str):
+        self.left_team = left_team
+        self.right_team = right_team
 
-    def get_first_team(self):
-        return self.first_team
+    def get_left_team(self):
+        return self.left_team
 
-    def get_second_team(self):
-        return self.second_team
+    def get_right_team(self):
+        return self.right_team
+
+
+class CalculatorDTOEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, CalculatorDTO):
+            return obj.__dict__
+        return json.JSONEncoder.default(self, obj)
