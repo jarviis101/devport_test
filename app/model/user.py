@@ -24,3 +24,8 @@ def user_loader(identifier: str) -> Optional[User]:
     auth_user.username = user['username']
     return auth_user
 
+
+@login_manager.request_loader
+def request_loader(request):
+    # TODO: Create for JWT auth
+    pass

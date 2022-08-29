@@ -3,8 +3,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from app import client
 from app.exception.auth.passwords_not_equals_exception import PasswordsNotEqualsException
 from app.exception.auth.user_register_validation_exception import UserRegisterValidationException
-from app.resolver.auth.login_resolver import LoginResolver
-from app.resolver.auth.register_resolver import RegisterResolver
+from app.resolver.auth.auth_resolver import LoginResolver, RegisterResolver
 from app.service.auth import RegisterService, LoginService
 
 auth = Blueprint('auth', __name__)

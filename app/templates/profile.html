@@ -8,4 +8,36 @@
     <h1 class="title">
       Welcome, {{ user.username }}!
     </h1>
+    <div class="columns">
+        <div class="column is-half">
+            <h2 class="subtitle">Calculate index</h2>
+                <form method="POST" action="/api/calculator">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <label>
+                                        <input class="input is-medium" type="text" name="left_team" placeholder="Left team" autofocus="">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <label>
+                                        <input class="input is-medium" type="text" name="right_team" placeholder="Right team">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="button is-block is-info is-medium is-fullwidth">Calculate</button>
+                </form>
+            </div>
+        </div>
+        <div class="column is-half">
+            <h2 class="subtitle"> Change password</h2>
+        </div>
+    </div>
 {% endblock %}

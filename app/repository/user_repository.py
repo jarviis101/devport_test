@@ -7,9 +7,9 @@ class UserRepository:
     def __init__(self, db: PyMongo):
         self.db = db
 
-    def find(self, id):
+    def find(self, identifier: str) -> Collection:
         return self.db.users.find_one({
-            '_id': ObjectId(id)
+            '_id': ObjectId(identifier)
         })
 
     def find_one_by_username(self, username: str) -> Collection:

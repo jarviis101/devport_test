@@ -14,12 +14,13 @@ app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
 client = PyMongo(app)
 
 login_manager = flask_login.LoginManager()
-
 login_manager.init_app(app)
 
 from .routes.auth import auth as auth_blueprint
-
 app.register_blueprint(auth_blueprint)
-from .routes.main import main as main_blueprint
 
+from .routes.main import main as main_blueprint
 app.register_blueprint(main_blueprint)
+
+from .routes.api import api as api_blueprint
+app.register_blueprint(api_blueprint)
