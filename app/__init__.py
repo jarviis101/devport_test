@@ -10,7 +10,7 @@ app.config['MONGO_URI'] = f'mongodb://' \
                           f'{os.environ["DB_PASSWORD"]}@' \
                           f'{os.environ["DB_HOST"]}:27017/' \
                           f'{os.environ["DB_NAME"]}'
-app.config['SECRET_KEY'] = 's3cr3t'
+app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
 client = PyMongo(app)
 
 login_manager = flask_login.LoginManager()

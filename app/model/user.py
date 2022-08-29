@@ -1,4 +1,3 @@
-from flask import Request
 from flask_login import UserMixin
 
 from app import login_manager
@@ -13,12 +12,13 @@ class User(UserMixin):
 
 
 @login_manager.user_loader
-def user_loader(username: str):
-    user = repository.findOneByUsername(username)
+def user_loader(id: str):
+    user = repository.find(id)
     if not user:
         return
 
     auth_user = User()
-    auth_user.id = user['username']
+    auth_user.id = user['_id']
+    auth_user.username = user['username']
     return auth_user
 

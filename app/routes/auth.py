@@ -1,5 +1,5 @@
 import flask_login
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for, Response
 from app import client
 from app.exception.auth.passwords_not_equals_exception import PasswordsNotEqualsException
 from app.exception.auth.user_register_validation_exception import UserRegisterValidationException
@@ -13,12 +13,12 @@ login_service = LoginService(client.db)
 
 
 @auth.route('/login', methods=['GET'])
-def login():
-    return render_template('login.html')
+def login() -> str:
+    return render_template('login.html', user=flask_login.current_user)
 
 
 @auth.route('/login', methods=['POST'])
-def login_action():
+def login_action() -> Response:
     dto = LoginResolver.resolve(request)
     try:
         login_service.login(dto)
@@ -30,12 +30,12 @@ def login_action():
 
 
 @auth.route('/signup', methods=['GET'])
-def signup():
-    return render_template('signup.html')
+def signup() -> str:
+    return render_template('signup.html', user=flask_login.current_user)
 
 
 @auth.route('/signup', methods=['POST'])
-def signup_action():
+def signup_action() -> Response:
     try:
         dto = RegisterResolver.resolve(request)
     except PasswordsNotEqualsException as ex:
@@ -48,6 +48,6 @@ def signup_action():
 
 
 @auth.route('/logout')
-def logout():
+def logout() -> Response:
     flask_login.logout_user()
     return redirect(url_for('main.index'))

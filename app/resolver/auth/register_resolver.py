@@ -1,7 +1,7 @@
 from flask import Request
 from werkzeug.security import generate_password_hash
 
-from app.dto.register_dto import RegisterDTO
+from app.dto.auth.register_dto import RegisterDTO
 from app.exception.auth.passwords_not_equals_exception import PasswordsNotEqualsException
 
 
