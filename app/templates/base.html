@@ -21,7 +21,7 @@
                                     Home
                                 </a>
                                 {% if user.id %}
-                                    <a href="{{ url_for('main.profile') }}" class="navbar-item">
+                                    <a href="{{ url_for('user.profile') }}" class="navbar-item">
                                         Profile
                                     </a>
                                     <a href="{{ url_for('auth.logout') }}" class="navbar-item">

@@ -21,5 +21,5 @@ def calculator():
         )
     index = cl.calculate(dto)
     return jsonify(
-        index=index
+        response=index
     )

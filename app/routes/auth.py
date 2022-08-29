@@ -25,7 +25,7 @@ def login_action() -> Response:
         flash(ex.args[0], 'error')
         return redirect(url_for('auth.login'))
 
-    return redirect(url_for('main.profile'))
+    return redirect(url_for('user.profile'))
 
 
 @auth.route('/signup', methods=['GET'])

@@ -19,6 +19,9 @@ login_manager.init_app(app)
 from .routes.auth import auth as auth_blueprint
 app.register_blueprint(auth_blueprint)
 
+from .routes.user import user as user_blueprint
+app.register_blueprint(user_blueprint)
+
 from .routes.main import main as main_blueprint
 app.register_blueprint(main_blueprint)
 

@@ -1,0 +1,2 @@
+class EmptyPasswordException(Exception):
+    pass

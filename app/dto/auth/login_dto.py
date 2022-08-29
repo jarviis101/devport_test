@@ -3,8 +3,8 @@ class LoginDTO:
         self.username = username
         self.password = password
 
-    def get_username(self):
+    def get_username(self) -> str:
         return self.username
 
-    def get_password(self):
+    def get_password(self) -> str:
         return self.password
