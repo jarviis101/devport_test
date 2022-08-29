@@ -13,6 +13,6 @@ class UserService:
     def password_update(self, dto: UpdatePasswordDTO, auth_user: User) -> None:
         self.db.users.find_one_and_update({'_id': auth_user.id}, {
             "$set": {
-                'password': dto.get_password()
+                'password': dto.password
             }
         })

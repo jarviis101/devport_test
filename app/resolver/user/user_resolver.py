@@ -13,13 +13,11 @@ class UserResolver:
         dto = json.loads(
             json.dumps(request.get_json()),
             object_hook=lambda d: UpdatePasswordDTO(**d)
-        )
+        )  # type: UpdatePasswordDTO
 
-        if not dto.get_password():
+        if not dto.password:
             raise EmptyPasswordException('Password is empty')
 
-        dto.set_password(
-            generate_password_hash(dto.get_password(), method='sha256')
-        )
+        dto.password = generate_password_hash(dto.password, method='sha256')
 
         return dto

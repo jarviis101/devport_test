@@ -3,8 +3,10 @@ class CalculatorDTO:
         self.__left_team = left_team
         self.__right_team = right_team
 
-    def get_left_team(self) -> str:
+    @property
+    def left_team(self) -> str:
         return self.__left_team
 
-    def get_right_team(self) -> str:
+    @property
+    def right_team(self) -> str:
         return self.__right_team

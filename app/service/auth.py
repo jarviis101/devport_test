@@ -18,8 +18,8 @@ class RegisterService:
 
     def register(self, dto: RegisterDTO) -> None:
         self.db.users.insert_one({
-            'username': dto.get_username(),
-            'password': dto.get_password()
+            'username': dto.username,
+            'password': dto.password
         })
 
 
@@ -29,9 +29,9 @@ class LoginService:
         self.db = db
 
     def login(self, dto: LoginDTO) -> None:
-        user = self.userRepository.find_one_by_username(dto.get_username())
+        user = self.userRepository.find_one_by_username(dto.username)
 
-        if not user or not check_password_hash(user['password'], dto.get_password()):
+        if not user or not check_password_hash(user['password'], dto.password):
             raise UserRegisterValidationException('Invalid credentials')
 
         auth_user = User()

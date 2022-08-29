@@ -7,10 +7,10 @@ class IndexCalculator:
 
     def calculate(self, dto: CalculatorDTO):
         first_team_list = list(
-            dto.get_left_team().replace(" ", "").lower()
+            dto.left_team.replace(" ", "").lower()
         )
         second_team_list = list(
-            dto.get_right_team().replace(" ", "").lower()
+            dto.right_team.replace(" ", "").lower()
         )
 
         if first_team_list == second_team_list:

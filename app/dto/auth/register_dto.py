@@ -1,13 +1,5 @@
-import json
+from app.dto.auth.base_auth_dto import BaseAuthDTO
 
 
-class RegisterDTO:
-    def __init__(self, username: str, password: str):
-        self.__username = username
-        self.__password = password
-
-    def get_username(self) -> str:
-        return self.__username
-
-    def get_password(self) -> str:
-        return self.__password
+class RegisterDTO(BaseAuthDTO):
+    pass

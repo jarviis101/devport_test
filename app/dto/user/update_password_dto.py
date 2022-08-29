@@ -2,8 +2,10 @@ class UpdatePasswordDTO:
     def __init__(self, password: str):
         self.__password = password
 
-    def get_password(self) -> str:
+    @property
+    def password(self) -> str:
         return self.__password
 
-    def set_password(self, password: str) -> None:
+    @password.setter
+    def password(self, password: str) -> None:
         self.__password = password

@@ -12,9 +12,9 @@ class CalculatorResolver:
         dto = json.loads(
             json.dumps(request.get_json()),
             object_hook=lambda d: CalculatorDTO(**d)
-        )
+        )  # type: CalculatorDTO
 
-        if not dto.get_left_team() or not dto.get_right_team():
+        if not dto.left_team or not dto.right_team:
             raise ValidationException('Validation failed')
 
         return dto
