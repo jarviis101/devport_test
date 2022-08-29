@@ -22,4 +22,5 @@ $ docker-compose up -d --build
 * lack of unit tests
 * lack of api & documentation
 * lack of csrf protection on forms
+* auth in the cookies :(
 * there may have been dubious decisions made, but I did not see them :)
