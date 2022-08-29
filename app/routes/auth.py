@@ -47,6 +47,7 @@ def signup_action() -> Response:
 
 
 @auth.route('/logout')
+@flask_login.login_required
 def logout() -> Response:
     flask_login.logout_user()
     return redirect(url_for('main.index'))

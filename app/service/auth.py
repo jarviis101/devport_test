@@ -1,12 +1,10 @@
-import json
-import bson.json_util
 import flask_login
 import pymongo
 from flask_pymongo import PyMongo
 from werkzeug.security import check_password_hash
 
 from app.dto.auth.login_dto import LoginDTO
-from app.dto.auth.register_dto import RegisterDTO, RegisterDTOEncoder
+from app.dto.auth.register_dto import RegisterDTO
 from app.exception.auth.user_register_validation_exception import UserRegisterValidationException
 from app.model.user import User
 from app.repository.user_repository import UserRepository
@@ -19,10 +17,10 @@ class RegisterService:
         self.db.users.create_index([('username', pymongo.ASCENDING)], unique=True)
 
     def register(self, dto: RegisterDTO) -> None:
-        user = json.dumps(dto, cls=RegisterDTOEncoder)
-        self.db.users.insert_one(
-            bson.json_util.loads(user)
-        )
+        self.db.users.insert_one({
+            'username': dto.get_username(),
+            'password': dto.get_password()
+        })
 
 
 class LoginService:
